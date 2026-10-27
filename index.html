@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artisan Connect | Handmade Catalogue</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #faf8f2;
+    color: #29352d;
+}
+
+header {
+    background: #285943;
+    color: white;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+}
+
+.hero {
+    padding: 55px 7%;
+    background: #eee6d5;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+.hero a {
+    display: inline-block;
+    background: #285943;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+main {
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+.search-area {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e5e0d5;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.product-image {
+    height: 145px;
+    display: grid;
+    place-items: center;
+    font-size: 65px;
+    background: #eee6d5;
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.category {
+    color: #285943;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.description {
+    color: #66736b;
+    line-height: 1.5;
+}
+
+.price {
+    font-weight: bold;
+}
+
+button {
+    background: #285943;
+    color: white;
+    border: none;
+    padding: 11px 13px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #193d2d;
+}
+
+.message {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background: #e6f1e8;
+    border-radius: 8px;
+    line-height: 1.5;
+}
+
+.workflow {
+    margin-top: 35px;
+    background: #e6eee6;
+    padding: 22px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+footer {
+    background: #203e30;
+    color: white;
+    padding: 24px 7%;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.small-note {
+    color: #f7e6b9;
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    nav a {
+        margin-left: 0;
+        margin-right: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌿 Artisan Connect</div>
+
+    <nav>
+        <a href="#catalogue">Catalogue</a>
+        <a href="#workflow">How It Works</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Discover Beautiful Handmade Crafts</h1>
+
+    <p>
+        Explore handmade products created by artisans.
+        This proof-of-concept demonstrates how a simple
+        digital catalogue could help artisans showcase
+        their products to potential buyers.
+    </p>
+
+    <a href="#catalogue">Explore Products</a>
+</section>
+
+<main>
+    <section id="catalogue">
+        <h2>Our Product Catalogue</h2>
+
+        <p>
+            Browse the sample products using search
+            and category filters.
+        </p>
+
+        <div class="search-area">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search for a product..."
+                aria-label="Search products"
+            >
+
+            <select id="categoryFilter"
+                    aria-label="Filter by category">
+                <option value="all">All Categories</option>
+                <option value="Home Decor">Home Decor</option>
+                <option value="Textiles">Textiles</option>
+                <option value="Handicrafts">Handicrafts</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Home Utility">Home Utility</option>
+            </select>
+        </div>
+
+        <p id="productCount">6 sample products</p>
+
+        <div class="grid" id="productGrid">
+
+            <article class="card"
+                data-name="Handmade Pottery"
+                data-category="Home Decor">
+                <div class="product-image">🏺</div>
+                <div class="card-content">
+                    <p class="category">Home Decor</p>
+                    <h3>Handmade Pottery</h3>
+                    <p class="description">
+                        Decorative pottery made by hand.
+                    </p>
+                    <p class="price">
+                        ₹450 <small>(sample price)</small>
+                    </p>
+                    <button onclick="showEnquiry('Handmade Pottery')">
+                        Enquire About Product
+                    </button>
+                </div>
+            </article>
+
+            <article class="card"
+                data-name="Handwoven Textile"
+                data-category="Textiles">
+                <div class="product-image">🧵</div>
+                <div class="card-content">
+                    <p class="category">Textiles</p>
+                    <h3>Handwoven Textile</h3>
+                    <p class="description">
+                        A sample traditional weaving product.
+                    </p>
+                    <p class="price">
+                        ₹700 <small>(sample price)</small>
+                    </p>
+                    <button onclick="showEnquiry('Handwoven Textile')">
+                        Enquire About Product
+                    </button>
+                </div>
+            </article>
+
+            <article class="card"
+                data-name="Bamboo Craft"
+                data-category="Handicrafts">
+                <div class="product-image">🎋</div>
+                <div class="card-content">
+                    <p class="category">Handicrafts</p>
+                    <h3>Bamboo Craft</h3>
+                    <p class="description">
+                        A sample bamboo handicraft listing.
+                    </p>
+                    <p class="price">
+                        ₹300 <small>(sample price)</small>
+                    </p>
+                    <button onclick="showEnquiry('Bamboo Craft')">
+                        Enquire About Product
+                    </button>
+                </div>
+            </article>
+
+            <article class="card"
+                data-name="Handmade Jewellery"
+                data-category="Accessories">
+                <div class="product-image">💍</div>
+                <div class="card-content">
+                    <p class="category">Accessories</p>
+                    <h3>Handmade Jewellery</h3>
+                    <p class="description">
+                        An illustrative handmade accessory.
+                    </p>
+                    <p class="price">
+                        ₹250 <small>(sample price)</small>
+                    </p>
+                    <button onclick="showEnquiry('Handmade Jewellery')">
+                        Enquire About Product
+                    </button>
+                </div>
+            </article>
+
+            <article class="card"
+                data-name="Woven Basket"
+                data-category="Home Utility">
+                <div class="product-image">🧺</div>
+                <div class="card-content">
+                    <p class="category">Home Utility</p>
+                    <h3>Woven Basket</h3>
+                    <p class="description">
+                        A sample woven basket product.
+                    </p>
+                    <p class="price">
+                        ₹350 <small>(sample price)</small>
+                    </p>
+                    <button onclick="showEnquiry('Woven Basket')">
+                        Enquire About Product
+                    </button>
+                </div>
+            </article>
+
+            <article class="card"
+                data-name="Clay Diya Set"
+                data-category="Home Decor">
+                <div class="product-image">🪔</div>
+                <div class="card-content">
+                    <p class="category">Home Decor</p>
+                    <h3>Clay Diya Set</h3>
+                    <p class="description">
+                        A sample set of traditional clay lamps.
+                    </p>
+                    <p class="price">
+                        ₹180 <small>(sample price)</small>
+                    </p>
+                    <button onclick="showEnquiry('Clay Diya Set')">
+                        Enquire About Product
+                    </button>
+                </div>
+            </article>
+
+        </div>
+
+        <p id="noResults" style="display:none;">
+            No matching products found. Try another search.
+        </p>
+
+        <div class="message" id="enquiryMessage"
+             role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="workflow" id="workflow">
+        <h2>How It Works</h2>
+        <p>
+            Coordinator Entry → Digital Catalogue → Buyer Enquiry
+        </p>
+        <p>
+            This is the proposed workflow for the PoC.
+        </p>
+    </section>
+</main>
+
+<footer>
+    <strong>Artisan Connect | Phase 3 PoC</strong>
+
+    <p>
+        This is a static front-end prototype using fictional
+        sample products and illustrative prices. The enquiry
+        button demonstrates an interaction only; no message
+        is sent. There is no connected database, AI model,
+        or measured cloud performance.
+    </p>
+
+    <p class="small-note">
+        Use real artisan details or photographs only with
+        permission. Record actual test results separately.
+    </p>
+</footer>
+
+<script>
+const searchInput = document.getElementById("searchInput");
+const categoryFilter = document.getElementById("categoryFilter");
+
+function filterProducts() {
+    const searchText = searchInput.value.toLowerCase().trim();
+    const selectedCategory = categoryFilter.value;
+
+    const cards = document.querySelectorAll(".card");
+    let visibleCount = 0;
+
+    cards.forEach(function(card) {
+        const name = card.dataset.name.toLowerCase();
+        const category = card.dataset.category;
+
+        const matchesSearch = name.includes(searchText);
+        const matchesCategory =
+            selectedCategory === "all" ||
+            category === selectedCategory;
+
+        if (matchesSearch && matchesCategory) {
+            card.style.display = "";
+            visibleCount++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    document.getElementById("productCount").textContent =
+        visibleCount + " matching product(s)";
+
+    document.getElementById("noResults").style.display =
+        visibleCount === 0 ? "block" : "none";
+}
+
+searchInput.addEventListener("input", filterProducts);
+categoryFilter.addEventListener("change", filterProducts);
+
+function showEnquiry(productName) {
+    const message = document.getElementById("enquiryMessage");
+
+    message.textContent =
+        "Demo only: You selected " + productName +
+        ". This demonstrates the proposed buyer enquiry step. " +
+        "No message was sent.";
+
+    message.style.display = "block";
+}
+</script>
+
+</body>
+</html>
